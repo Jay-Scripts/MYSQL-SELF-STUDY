@@ -151,3 +151,150 @@ FROM CUSTOMERS;
 
 -- ALTER table STUDENTS
 -- ADD STUDENT_ID  INT unique AFTER FULL_NAME;
+
+
+-- CREATE DATABASE COMPANY_HR;
+-- USE COMPANY_HR;
+
+-- CREATE TABLE DEPARTMENTS (
+-- DEPT_ID INT AUTO_INCREMENT,
+-- DEPT_NAME VARCHAR(50) UNIQUE,
+-- LOCATION VARCHAR(100) NOT NULL,
+-- PRIMARY KEY (DEPT_ID)
+-- );
+
+
+-- INSERT INTO DEPARTMENTS(DEPT_NAME, LOCATION)
+-- VALUES
+-- ('IT DEPARTMENT', '3RD FLOOR SAMSON ROAD'),
+-- ('HR DEPARTMENT', '2ND FLOOR SAMSON ROAD'),
+-- ('TRAINING DEPARTMENT', '1ST FLOOR SAMSON ROAD');
+
+-- CREATE table EMPLOYEES (
+-- EMP_ID INT auto_increment,
+-- FULL_NAME VARCHAR(100) NOT NULL,
+--  EMAIL VARCHAR(100) UNIQUE,
+--  AGE INT NOT NULL,
+--  DEPT_ID INT NOT NULL,
+--  DATE_HIRED DATE NOT NULL,
+--  CREATE_AT TIMESTAMP  NOT NULL,
+--  constraint CHECK_AGE CHECK (AGE >= 18 AND AGE <= 65),
+--  foreign key (DEPT_ID) REFERENCES DEPARTMENTS(DEPT_ID),
+--  PRIMARY KEY (EMP_ID)
+--  );
+--  
+-- INSERT INTO EMPLOYEES(	FULL_NAME, 
+-- 						EMAIL, 
+-- 						AGE, 
+-- 						DEPT_ID, 
+-- 						DATE_HIRED,
+--                         CREATE_AT
+--                         )
+-- VALUES
+-- (	'CORNELIO A. GATBONTON', 
+-- 	'CORNELIO@EMAIL.COM', 
+-- 	21, 
+--     1, 
+--     CURDATE(), 
+--     CURTIME() ),
+-- (	'JOYCE A. GATBONTON', 
+-- 	'JOYCE@EMAIL.COM', 
+-- 	25, 
+--     2, 
+--     CURDATE(), 
+--     CURTIME() ),
+--     (	'RYLE A. GATBONTON', 
+-- 	'RYLE@EMAIL.COM', 
+-- 	20, 
+--     3, 
+--     CURDATE(), 
+--     CURTIME() )
+-- ;
+
+-- CREATE TABLE POSITIONS(
+-- POS_ID INT auto_increment,
+-- POS_TITLE VARCHAR(50) UNIQUE,
+-- EMP_ID INT,
+-- SALARY DEC(10, 2) NOT NULL,
+-- primary key (POS_ID),
+-- foreign key (EMP_ID) references EMPLOYEES(EMP_ID),
+-- constraint CHECK_SALARY CHECK(SALARY >= 10000)
+-- );
+-- INSERT INTO POSITIONS(POS_TITLE, EMP_ID, SALARY)
+-- VALUES
+-- ('DEVELOPER', 1, 150000.00),
+-- ('HEAD RECRUITER', 4, 10000.00),
+-- ('HEAD TRAINER', 5, 10000)
+
+-- Test constraint violations:
+-- THIS WILL ERROR DUPLICATE EMAIL
+--  INSERT INTO EMPLOYEES(	FULL_NAME, 
+-- 						EMAIL, 
+-- 						AGE, 
+-- 						DEPT_ID, 
+-- 						DATE_HIRED,
+--                         CREATE_AT
+--                         )
+-- VALUES
+-- (	'CORNELIO A. GATBONTON', 
+-- 	'CORNELIO@EMAIL.COM', 
+-- 	21, 
+--     1, 
+--     CURDATE(), 
+--     CURTIME() );
+
+-- THIS WILL ERROR AGE LESS THAN 18
+--  INSERT INTO EMPLOYEES(	FULL_NAME, 
+-- 						EMAIL, 
+-- 						AGE, 
+-- 						DEPT_ID, 
+-- 						DATE_HIRED,
+--                         CREATE_AT
+--                         )
+-- VALUES
+-- (	'CORNELIO A. GATBONTON', 
+-- 	'CORNELIO@EMAIL.COM', 
+-- 	15, 
+--     1, 
+--     CURDATE(), 
+--     CURTIME() );
+
+-- THIS WILL ERROR DUPLICATE EMAIL
+--  INSERT INTO EMPLOYEES(	FULL_NAME, 
+-- 						EMAIL, 
+-- 						AGE, 
+-- 						DEPT_ID, 
+-- 						DATE_HIRED,
+--                         CREATE_AT
+--                         )
+-- VALUES
+-- (	'CORNELIO A. GATBONTON', 
+-- 	'CORNELIO@EMAIL.COM', 
+-- 	21, 
+--     1, 
+--     CURDATE(), 
+--     CURTIME() );
+
+-- THIS WILL ERROR Salary below 10000
+-- INSERT INTO POSITIONS(POS_TITLE, EMP_ID, SALARY)
+-- VALUES
+
+-- ('HEAD TRAINER', 5, 5000);
+
+
+
+--  THIS WILL ERROR Invalid dept_id in employees BECAUISE THERE WERE NO DEPT ID 100 IN PARENT TAble
+--  INSERT INTO EMPLOYEES(	FULL_NAME, 
+-- 						EMAIL, 
+-- 						AGE, 
+-- 						DEPT_ID, 
+-- 						DATE_HIRED,
+--                         CREATE_AT
+--                         )
+-- VALUES
+-- (	'CORNELIO A. GATBONTON', 
+-- 	'CORNELIO@EMAIL.COM', 
+-- 	21, 
+--     100, 
+--     CURDATE(), 
+--     CURTIME() );
