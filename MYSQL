@@ -523,4 +523,96 @@ FROM CUSTOMERS;
 -- INNER JOIN AUTHORS ON BOOKS.AUTHOR_ID = AUTHORS.AUTHOR_ID;
 
 
- 
+ -- CREATE database CUSTOMER_DATA;
+--  USE CUSTOMER_DATA;
+
+-- CREATE TABLE USERS(
+-- USER_ID INT auto_increment primary KEY,
+-- FULL_NAME VARCHAR(100) NOT NULL,
+-- EMAIL VARCHAR(100) unique,
+-- GENDER ENUM ('MALE', 'FEMALE') DEFAULT 'MALE'
+-- );
+
+-- CREATE TABLE PURCHASES(
+-- PURCHASE_ID INT AUTO_INCREMENT PRIMARY KEY,
+-- USER_ID INT,
+-- PRODUCT_NAME VARCHAR(100) NOT NULL, 
+-- AMOUNT DECIMAL(10,2) NOT NULL,
+-- PURCHASED_AT DATE NOT NULL
+-- );
+
+-- INSERT INTO USERS
+-- (FULL_NAME, EMAIL, GENDER)
+-- VALUES
+-- ('JOYCE GELLE', 'JOYCE@GMAIL.COM', 'FEMALE'),
+-- ('GOYCE GULIANIO', 'GOYCE@GMAIL.COM', 'MALE'),
+-- ('GIYU TAMIOKA', 'GIYU@GMAIL.COM', 'MALE'),
+-- ('GAARA LLU', 'GAARA@GMAIL.COM', 'MALE'),
+-- ('NAMI SWAN', 'NAMI@GMAIL.COM', 'FEMALE')
+-- ;
+
+-- INSERT INTO PURCHASES(
+-- USER_ID, PRODUCT_NAME, AMOUNT, PURCHASED_AT
+-- )
+-- VALUES
+-- (1, 'CHOCO CHOCO', 10.00, curdate()),
+-- (1, 'DARK CHOCO', 20.00, curdate()),
+-- (1, 'WHITE CHOCO', 30.00, curdate()),
+-- (1, 'MILK CHOCO', 50.00, curdate()),
+-- (1, 'PURE CHOCO', 90.00, curdate()),
+-- (2, 'LAVANDER TOWEL', 15.00, curdate()),
+-- (2, 'ORANGE JUICE', 15.00, curdate()),
+-- (2, 'PIZZA PIE', 35.00, curdate()),
+-- (2, 'MILK', 25.00, curdate()),
+-- (2, 'CORN CHIPS', 53.00, curdate()),
+-- (3, 'CORN PIE', 12.00, curdate()),
+-- (3, 'PEACH PIE', 13.00, curdate()),
+-- (3, 'APPLE PIE', 16.00, curdate()),
+-- (3, 'CHOCO PIE', 17.00, curdate()),
+-- (3, 'CREAM PIE', 19.00, curdate()),
+-- (4, 'FRIED FRIES', 12.00, curdate()),
+-- (4, 'HASH BROWN', 54.00, curdate()),
+-- (4, 'HOT CAKE', 34.00, curdate()),
+-- (4, 'CHOCO COFFEE', 23.00, curdate()),
+-- (4, 'CHOCO BREAD', 14.00, curdate()),
+-- (5, 'MILK BREAD', 23.00, curdate()),
+-- (5, 'COCONUT MILK', 56.00, curdate()),
+-- (5, 'SOY MILK', 16.00, curdate()),
+-- (5, 'ALMOND MILK', 23.00, curdate()),
+-- (5, 'SOIL MILK', 44.00, curdate());
+
+
+-- Wildcard Practice:
+
+-- List users whose names start with 'G'
+-- SELECT * 
+-- FROM USERS
+-- WHERE FULL_NAME LIKE 'G%';
+-- List emails that end with .com
+-- SELECT * 
+-- FROM USERS
+-- WHERE EMAIL LIKE '%.COM';
+
+-- Find users with 'LL' in their name
+-- SELECT * 
+-- FROM USERS 
+-- WHERE FULL_NAME LIKE '%LL%';
+
+-- Find users with names of exactly 6 characters
+-- select * 
+-- FROM USERS
+-- WHERE FULL_NAME LIKE '______';
+
+-- Show purchases with amount between 100 and 300
+-- SELECT AMOUNT 
+-- FROM PURCHASES 
+-- WHERE AMOUNT >= 100 AND AMOUNT <= 300;
+
+-- Display product_name in uppercase
+-- SELECT upper(PRODUCT_NAME)
+-- FROM PURCHASES;
+
+-- Join users and purchases and display full_name, product_name, amount, purchased_at
+-- select FULL_NAME, PRODUCT_NAME, AMOUNT, PURCHASED_AT
+-- FROM PURCHASES
+-- inner join USERS ON USERS.USER_ID = PURCHASES.USER_ID;
