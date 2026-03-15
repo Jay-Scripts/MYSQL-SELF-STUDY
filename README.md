@@ -32,5 +32,5 @@ This repository contains **notes, SQL exercises, and practice databases** coveri
 - **Tools:** MySQL Workbench, phpMyAdmin, 
 
 ---
-!
+
 ##  Project Structure
